@@ -38,10 +38,6 @@ public class DaoCsv implements IDaoCsv {
             IQuestion question = new Question(id, textOfQuestion, type, answer);
             questions.addQuestion(question);
         }
-
-        for(Map.Entry<Integer, IQuestion> question : questions.getQuestions().entrySet()) {
-            System.out.println(question.getValue().toString());
-        }
     }
 
     public IQuestions getAll(){
