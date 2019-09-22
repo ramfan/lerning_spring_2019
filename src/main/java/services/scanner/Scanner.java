@@ -30,7 +30,7 @@ public class Scanner implements IScanner {
 
     private void askSingle(IQuestion question) throws IOException {
         System.out.print(
-                "№ " + question.getId()
+                " №" + question.getId()
                 +"Вопрос с одиночным ответом: " + question.getQuestion()
                 +"\n Ваш ответ: "
         );
@@ -40,7 +40,7 @@ public class Scanner implements IScanner {
 
     private void askText(IQuestion question) throws IOException {
         System.out.print(
-                "№ " + question.getId()
+                " №" + question.getId()
                         +"Вопрос со свободным ответом: " + question.getQuestion()
                         +"\n Ваш ответ: "
         );
@@ -50,7 +50,7 @@ public class Scanner implements IScanner {
 
     private void askMulti(IQuestion question) throws IOException {
         System.out.print(
-                "№ " + question.getId()
+                " №" + question.getId()
                         +"Вопрос с множественым ответом: " + question.getQuestion()
                         +"\n Ваш ответ: "
         );

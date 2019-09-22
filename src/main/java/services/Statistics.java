@@ -46,13 +46,25 @@ public class Statistics implements IStatistics {
 
     public void print() {
         Integer countAnswers = correctAnswers.size() + inCorrectAnswers.size();
-
+        System.out.println("===============================");
         System.out.println("Вы ответили правильно на "
                 + correctAnswers.size()
                 + " из "
                 + countAnswers
         );
+        System.out.println("===============================");
         System.out.println("Ваша оценка: " +  getGrade());
+        System.out.println("===============================");
+        for(Map.Entry<Integer, InCorrectAnswer> item: inCorrectAnswers.entrySet()) {
+            System.out.println("Ошибка в вопросе № "
+                    + item.getKey()
+                    + "\n правильный ответ был "
+                    + item.getValue().getCorrectAnswer()
+                    + "\n ваш ответ: "
+                    + item.getValue().getUserAnswer()
+
+            );
+        }
     }
 
     private class InCorrectAnswer {

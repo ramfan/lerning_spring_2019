@@ -8,7 +8,7 @@
         <constructor-arg name="path" value="questions.csv"/>
         <constructor-arg name="questions" ref="questions"/>
     </bean>
-    <bean id="statistic" class="services.Statistics"></bean>
+    <bean id="statistic" class="services.Statistics"/>
     <bean id="scanner" class="services.scanner.Scanner">
         <constructor-arg name="dao" ref="daoCsv"/>
         <constructor-arg name="stats" ref="statistic"/>
