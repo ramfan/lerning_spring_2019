@@ -4,6 +4,7 @@ import dao.IDaoCsv;
 import models.question.EQuestionType;
 import models.question.IQuestion;
 import models.questions.IQuestions;
+import services.IStatistics;
 import services.exceptions.BaseException;
 
 import java.io.BufferedReader;
@@ -15,9 +16,11 @@ public class Scanner implements IScanner {
 
     private final IDaoCsv dao;
     private IQuestions questions = null;
+    private final IStatistics stats;
 
-    public Scanner(IDaoCsv dao){
+    public Scanner(IDaoCsv dao, IStatistics stats){
         this.dao = dao;
+        this.stats = stats;
         questions = dao.getAll();
     }
 
@@ -32,7 +35,7 @@ public class Scanner implements IScanner {
                 +"\n Ваш ответ: "
         );
         String answer = waitingAnswer();
-        questions.checkAnswer(question, answer);
+        stats.setAnswer(question, answer, questions.checkAnswer(question, answer));
     }
 
     private void askText(IQuestion question) throws IOException {
@@ -42,7 +45,7 @@ public class Scanner implements IScanner {
                         +"\n Ваш ответ: "
         );
         String answer = waitingAnswer();
-        questions.checkAnswer(question, answer);
+        stats.setAnswer(question, answer, questions.checkAnswer(question, answer));
     }
 
     private void askMulti(IQuestion question) throws IOException {
@@ -52,7 +55,7 @@ public class Scanner implements IScanner {
                         +"\n Ваш ответ: "
         );
         String answer = waitingAnswer();
-        questions.checkAnswer(question, answer);
+        stats.setAnswer(question, answer, questions.checkAnswer(question, answer));
     }
 
     public void startTest() throws IOException, BaseException {
@@ -72,5 +75,6 @@ public class Scanner implements IScanner {
                     break;
             }
         }
+        stats.print();
     }
 }
